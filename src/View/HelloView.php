@@ -7,8 +7,10 @@ use Interop\Http\Factory\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\View\PhpTemplate;
 
 class HelloView extends PhpTemplate {
-    public function __construct(StreamFactoryInterface $factory) {
+    public function __construct(StreamFactoryInterface $factory, string $ipAddress, string $url) {
         parent::__construct($factory);
+        $this->ipAddress = $ipAddress;
+        $this->url = $url;
     }
 
     public function getPathToTemplate() : string {

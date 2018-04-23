@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\View\ExceptionView;
+use App\View\ExceptionViewFactory;
 use DI\ContainerBuilder;
 use Http\Factory\Guzzle\RequestFactory;
 use Http\Factory\Guzzle\ResponseFactory;
@@ -46,7 +46,7 @@ function get_request() : ServerRequestInterface {
 set_error_handler('Miklcct\ThinPhpApp\exception_error_handler');
 set_exception_handler(
     get_exception_handler_for_view(
-        get_container()->get(ExceptionView::class)
+        get_container()->get(ExceptionViewFactory::class)
         , get_container()->get(ResponseFactoryInterface::class)
     )
 );

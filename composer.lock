@@ -277,12 +277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/miklcct/thin_php_app.git",
-                "reference": "ec5fea33519207fc314ee8ea1d7c14594d733597"
+                "reference": "1efd27aa4688e1847d0ddbab58914aad69b5ee52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/ec5fea33519207fc314ee8ea1d7c14594d733597",
-                "reference": "ec5fea33519207fc314ee8ea1d7c14594d733597",
+                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/1efd27aa4688e1847d0ddbab58914aad69b5ee52",
+                "reference": "1efd27aa4688e1847d0ddbab58914aad69b5ee52",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +321,7 @@
                 "framework",
                 "psr-15"
             ],
-            "time": "2018-04-23T06:33:06+00:00"
+            "time": "2018-04-23T07:46:31+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -419,16 +419,16 @@
         },
         {
             "name": "php-di/php-di",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "b632aef4b45af94571a9f4b0e4544ae69dc8eb13"
+                "reference": "71a7f2ed1e728138060ea159cbb1a92dc8620bd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/b632aef4b45af94571a9f4b0e4544ae69dc8eb13",
-                "reference": "b632aef4b45af94571a9f4b0e4544ae69dc8eb13",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/71a7f2ed1e728138060ea159cbb1a92dc8620bd2",
+                "reference": "71a7f2ed1e728138060ea159cbb1a92dc8620bd2",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +478,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2018-04-21T17:47:16+00:00"
+            "time": "2018-04-23T06:54:40+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
