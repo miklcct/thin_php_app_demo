@@ -1,0 +1,26 @@
+{
+    "name" : "miklcct/thin_php_app_demo",
+    "description" : "Demo application for thin_php_app",
+    "type" : "project",
+    "license" : ["BSD-4-Clause"],
+    "authors" : [
+        {
+            "name" : "Michael Tsang",
+            "email" : "miklcct@gmail.com",
+            "homepage" : "https://miklcct.com/",
+            "role" : "developer"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "src/"
+        }
+    },
+    "require": {
+        "php" : ">=7.1",
+        "miklcct/thin_php_app": "dev-master",
+        "http-interop/http-factory": "^0.3.0",
+        "php-di/php-di": "^6.0",
+        "http-interop/http-factory-guzzle": "^0.3.1"
+    }
+}
