@@ -13,7 +13,7 @@ class ExceptionViewFactory implements Base {
         $this->factory = $factory;
     }
 
-    public function makeView(Throwable $exception) : View {
+    public function __invoke(Throwable $exception) : View {
         return new ExceptionView($this->factory, $exception);
     }
 

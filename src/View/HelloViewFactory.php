@@ -4,13 +4,14 @@ declare(strict_types=1);
 namespace App\View;
 
 use Interop\Http\Factory\StreamFactoryInterface;
+use Miklcct\ThinPhpApp\View\View;
 
 class HelloViewFactory {
     public function __construct(StreamFactoryInterface $factory) {
         $this->factory = $factory;
     }
 
-    public function make(string $ip_address, string $url) {
+    public function __invoke(string $ip_address, string $url) : View {
         return new HelloView($this->factory, $ip_address, $url);
     }
 

@@ -24,10 +24,11 @@ class HelloApp extends Application {
     }
 
     protected function run(ServerRequestInterface $request) : ResponseInterface {
+        $view_factory = $this->viewFactory;
         return $this
             ->responseFactory
             ->createResponse()
-            ->withBody($this->viewFactory->make(get_client_address($request), get_url($request))->render());
+            ->withBody($view_factory(get_client_address($request), get_url($request))->render());
     }
 
     protected function getMiddlewares() : array {

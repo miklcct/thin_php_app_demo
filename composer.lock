@@ -277,12 +277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/miklcct/thin_php_app.git",
-                "reference": "1efd27aa4688e1847d0ddbab58914aad69b5ee52"
+                "reference": "424d3c9b0d1c8ac41f567adcc464704d6ef788b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/1efd27aa4688e1847d0ddbab58914aad69b5ee52",
-                "reference": "1efd27aa4688e1847d0ddbab58914aad69b5ee52",
+                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/424d3c9b0d1c8ac41f567adcc464704d6ef788b4",
+                "reference": "424d3c9b0d1c8ac41f567adcc464704d6ef788b4",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +321,7 @@
                 "framework",
                 "psr-15"
             ],
-            "time": "2018-04-23T07:46:31+00:00"
+            "time": "2018-04-23T08:11:25+00:00"
         },
         {
             "name": "nikic/php-parser",
