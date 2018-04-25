@@ -3,42 +3,39 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Middleware\XhtmlHeader;
+use App\Middleware\DisallowFrame;
 use App\View\HelloViewFactory;
-use Interop\Http\Factory\ResponseFactoryInterface;
-use Miklcct\ThinPhpApp\Application;
+use Miklcct\ThinPhpApp\Controller\Application;
+use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use function Miklcct\ThinPhpApp\Http\get_client_address;
-use function Miklcct\ThinPhpApp\Http\get_url;
+use function Miklcct\ThinPhpApp\Request\get_client_address;
 
 class HelloApp extends Application {
     public function __construct(
-        ResponseFactoryInterface $responseFactory
+        ViewResponseFactoryInterface $viewResponseFactory
         , HelloViewFactory $viewFactory
-        , XhtmlHeader $xhtmlHeader
+        , DisallowFrame $contentSecurityPolicy
     ) {
-        $this->responseFactory = $responseFactory;
         $this->viewFactory = $viewFactory;
-        $this->xhtmlHeader = $xhtmlHeader;
+        $this->contentSecurityPolicy = $contentSecurityPolicy;
+        $this->viewResponseFactory = $viewResponseFactory;
     }
 
     protected function run(ServerRequestInterface $request) : ResponseInterface {
+        $response_factory = $this->viewResponseFactory;
         $view_factory = $this->viewFactory;
-        return $this
-            ->responseFactory
-            ->createResponse()
-            ->withBody($view_factory(get_client_address($request), get_url($request))->render());
+        return $response_factory($view_factory(get_client_address($request), $request->getUri()->__toString()));
     }
 
     protected function getMiddlewares() : array {
-        return [$this->xhtmlHeader];
+        return [$this->contentSecurityPolicy];
     }
 
-    /** @var ResponseFactoryInterface */
-    private $responseFactory;
     /** @var HelloViewFactory */
     private $viewFactory;
-    /** @var XhtmlHeader */
-    private $xhtmlHeader;
+    /** @var DisallowFrame */
+    private $contentSecurityPolicy;
+    /** @var ViewResponseFactoryInterface */
+    private $viewResponseFactory;
 }

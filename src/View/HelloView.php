@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace App\View;
 
 use Interop\Http\Factory\StreamFactoryInterface;
-use Miklcct\ThinPhpApp\View\PhpTemplate;
 
-class HelloView extends PhpTemplate {
+class HelloView extends PhpXhtmlTemplate {
     public function __construct(StreamFactoryInterface $factory, string $ipAddress, string $url) {
         parent::__construct($factory);
         $this->ipAddress = $ipAddress;

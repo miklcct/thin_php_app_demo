@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "7202b742e9289123be7b19018f84ceff",
@@ -277,17 +277,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/miklcct/thin_php_app.git",
-                "reference": "424d3c9b0d1c8ac41f567adcc464704d6ef788b4"
+                "reference": "65481c7c7170ade11474468b6d33cb66400090a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/424d3c9b0d1c8ac41f567adcc464704d6ef788b4",
-                "reference": "424d3c9b0d1c8ac41f567adcc464704d6ef788b4",
+                "url": "https://api.github.com/repos/miklcct/thin_php_app/zipball/65481c7c7170ade11474468b6d33cb66400090a3",
+                "reference": "65481c7c7170ade11474468b6d33cb66400090a3",
                 "shasum": ""
             },
             "require": {
                 "http-interop/http-factory": "^0.3.0",
                 "http-interop/response-sender": "^1.0",
+                "php": ">=7.1",
                 "psr/http-server-handler": "^1.0",
                 "psr/http-server-middleware": "^1.0",
                 "ralouphie/getallheaders": "^2.0",
@@ -299,8 +300,10 @@
                     "Miklcct\\ThinPhpApp\\": "src/"
                 },
                 "files": [
-                    "src/helpers.php",
-                    "src/Http/functions.php"
+                    "src/Escaper/functions.php",
+                    "src/Response/functions.php",
+                    "src/Request/functions.php",
+                    "src/Utility/functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -321,7 +324,7 @@
                 "framework",
                 "psr-15"
             ],
-            "time": "2018-04-23T08:11:25+00:00"
+            "time": "2018-04-25T10:00:11+00:00"
         },
         {
             "name": "nikic/php-parser",

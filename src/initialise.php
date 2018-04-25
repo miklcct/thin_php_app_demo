@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\View\ExceptionViewFactory;
+use App\Response\ExceptionResponseFactory;
 use DI\ContainerBuilder;
+use GuzzleHttp\Psr7\ServerRequest;
 use Http\Factory\Guzzle\RequestFactory;
 use Http\Factory\Guzzle\ResponseFactory;
 use Http\Factory\Guzzle\ServerRequestFactory;
@@ -13,10 +14,14 @@ use Interop\Http\Factory\RequestFactoryInterface;
 use Interop\Http\Factory\ResponseFactoryInterface;
 use Interop\Http\Factory\ServerRequestFactoryInterface;
 use Interop\Http\Factory\StreamFactoryInterface;
+use Miklcct\ThinPhpApp\Exception\ExceptionErrorHandler;
+use Miklcct\ThinPhpApp\Exception\ResponseFactoryExceptionHandler;
+use Miklcct\ThinPhpApp\Response\ExceptionResponseFactoryInterface;
+use Miklcct\ThinPhpApp\Response\ViewResponseFactory;
+use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function DI\get;
-use function Miklcct\ThinPhpApp\get_exception_handler_for_view;
 
 // require the autoloader
 require __DIR__ . '/../vendor/autoload.php';
@@ -31,6 +36,8 @@ function get_container() : ContainerInterface {
                 ServerRequestFactoryInterface::class => get(ServerRequestFactory::class),
                 ResponseFactoryInterface::class => get(ResponseFactory::class),
                 StreamFactoryInterface::class => get(StreamFactory::class),
+                ExceptionResponseFactoryInterface::class => get(ExceptionResponseFactory::class),
+                ViewResponseFactoryInterface::class => get(ViewResponseFactory::class),
             ]
         );
         $container = $builder->build();
@@ -39,16 +46,11 @@ function get_container() : ContainerInterface {
 }
 
 function get_request() : ServerRequestInterface {
-    return get_container()->get(ServerRequestFactoryInterface::class)->createServerRequestFromArray($_SERVER);
+    return ServerRequest::fromGlobals();
 }
 
 // set up error handler
-set_error_handler('Miklcct\ThinPhpApp\exception_error_handler');
-set_exception_handler(
-    get_exception_handler_for_view(
-        get_container()->get(ExceptionViewFactory::class)
-        , get_container()->get(ResponseFactoryInterface::class)
-    )
-);
+set_error_handler(get_container()->get(ExceptionErrorHandler::class));
+set_exception_handler(get_container()->get(ResponseFactoryExceptionHandler::class));
 
 

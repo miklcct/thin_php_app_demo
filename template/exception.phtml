@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 use App\View\ExceptionView;
-use function Miklcct\ThinPhpApp\e;
+use function Miklcct\ThinPhpApp\Escaper\xml;
 
 /** @var ExceptionView $this */
 ?>
@@ -13,8 +13,8 @@ use function Miklcct\ThinPhpApp\e;
     <body>
         <h1>Oops, an error has been occurred!</h1>
         <h2>Details</h2>
-        <p><code><?= e($this->exception->getFile() . ':' . $this->exception->getLine() . ': ' . $this->exception->getMessage()) ?></code></p>
+        <p><code><?= xml($this->exception->getFile() . ':' . $this->exception->getLine() . ': ' . $this->exception->getMessage()) ?></code></p>
         <h3>Stack trace</h3>
-        <pre><?= e($this->exception->getTraceAsString()) ?></pre>
+        <pre><?= xml($this->exception->getTraceAsString()) ?></pre>
     </body>
 </html>

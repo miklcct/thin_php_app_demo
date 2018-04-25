@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 use App\View\HelloView;
-use function Miklcct\ThinPhpApp\e;
+use function Miklcct\ThinPhpApp\Escaper\xml;
 
 /** @var HelloView $this */
 
@@ -17,13 +17,13 @@ use function Miklcct\ThinPhpApp\e;
             Hello World!
         </p>
         <p>
-            The server time now is <?= e(strftime('%c')) ?>.
+            The server time now is <?= xml(strftime('%c')) ?>.
         </p>
         <p>
-            The URL of this page is <a href="<?= e($this->url) ?>"><?= e($this->url) ?></a>.
+            The URL of this page is <a href="<?= xml($this->url) ?>"><?= xml($this->url) ?></a>.
         </p>
         <p>
-            You are visiting this page from IP address <?= e($this->ipAddress) ?>.
+            You are visiting this page from IP address <?= xml($this->ipAddress) ?>.
         </p>
     </body>
 </html>
