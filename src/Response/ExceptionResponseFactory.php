@@ -8,6 +8,8 @@ use Interop\Http\Factory\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\Response\ExceptionResponseFactoryInterface;
 use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
+use Teapot\HttpException;
+use Teapot\StatusCode\Http;
 use Throwable;
 
 class ExceptionResponseFactory implements ExceptionResponseFactoryInterface {
@@ -18,7 +20,8 @@ class ExceptionResponseFactory implements ExceptionResponseFactoryInterface {
 
     public function __invoke(Throwable $exception) : ResponseInterface {
         $view_response_factory = $this->viewResponseFactory;
-        return $view_response_factory(new ExceptionView($this->streamFactory, $exception));
+        return $view_response_factory(new ExceptionView($this->streamFactory, $exception))
+            ->withStatus($exception instanceof HttpException ? $exception->getCode() : Http::INTERNAL_SERVER_ERROR);
     }
 
     /** @var ViewResponseFactoryInterface */

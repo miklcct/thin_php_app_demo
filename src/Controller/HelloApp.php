@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Middleware\DisallowFrame;
 use App\View\HelloViewFactory;
-use Miklcct\ThinPhpApp\Controller\Application;
 use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,10 +14,10 @@ class HelloApp extends Application {
     public function __construct(
         ViewResponseFactoryInterface $viewResponseFactory
         , HelloViewFactory $viewFactory
-        , DisallowFrame $contentSecurityPolicy
+        , DisallowFrame $disallowFrame
     ) {
+        parent::__construct($disallowFrame);
         $this->viewFactory = $viewFactory;
-        $this->contentSecurityPolicy = $contentSecurityPolicy;
         $this->viewResponseFactory = $viewResponseFactory;
     }
 
@@ -28,14 +27,9 @@ class HelloApp extends Application {
         return $response_factory($view_factory(get_client_address($request), $request->getUri()->__toString()));
     }
 
-    protected function getMiddlewares() : array {
-        return [$this->contentSecurityPolicy];
-    }
-
     /** @var HelloViewFactory */
     private $viewFactory;
-    /** @var DisallowFrame */
-    private $contentSecurityPolicy;
+
     /** @var ViewResponseFactoryInterface */
     private $viewResponseFactory;
 }
