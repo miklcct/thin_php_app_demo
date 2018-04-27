@@ -10,6 +10,9 @@ use Miklcct\ThinPhpApp\View\StaticTemplate;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Example application to return a randomly chosen static page
+ */
 class Animation extends Application {
     public function __construct(
         DisallowFrame $disallowFrame
@@ -26,7 +29,8 @@ class Animation extends Application {
         return ($this->viewResponseFactory)(
             new class($sf) extends StaticTemplate {
                 protected function getPathToTemplate() : string {
-                    return __DIR__ . '/../../template/animation.xhtml';
+                    $page_list = glob(__DIR__ . '/../../template/animation/*.xhtml');
+                    return $page_list[array_rand($page_list)];
                 }
 
                 public function getContentType() : ?string {

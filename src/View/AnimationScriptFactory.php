@@ -10,8 +10,8 @@ class AnimationScriptFactory {
         $this->streamFactory = $streamFactory;
     }
 
-    public function __invoke(int $blinkInterval) : AnimationScript {
-        return new AnimationScript($this->streamFactory, $blinkInterval);
+    public function __invoke(int $blinkInterval, string $colour = 'red') : AnimationScript {
+        return new AnimationScript($this->streamFactory, $blinkInterval, $colour);
     }
 
     /** @var StreamFactoryInterface */

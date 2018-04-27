@@ -7,9 +7,10 @@ use Interop\Http\Factory\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\View\PhpTemplate;
 
 class AnimationScript extends PhpTemplate {
-    public function __construct(StreamFactoryInterface $streamFactory, int $blinkInterval) {
+    public function __construct(StreamFactoryInterface $streamFactory, int $blinkInterval, string $colour) {
         parent::__construct($streamFactory);
         $this->blinkInterval = $blinkInterval;
+        $this->colour = $colour;
     }
 
     protected function getPathToTemplate() : string {
@@ -24,6 +25,12 @@ class AnimationScript extends PhpTemplate {
         return $this->blinkInterval;
     }
 
+    protected function getColour() : string {
+        return $this->colour;
+    }
+
     /** @var int */
     private $blinkInterval;
+    /** @var string */
+    private $colour;
 }

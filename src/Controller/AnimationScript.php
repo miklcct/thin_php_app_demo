@@ -9,6 +9,9 @@ use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Example application to dynamically generate Javascript.
+ */
 class AnimationScript extends Application {
     public function __construct(
         DisallowFrame $disallowFrame

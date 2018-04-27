@@ -10,6 +10,9 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function Miklcct\ThinPhpApp\Request\get_client_address;
 
+/**
+ * Example application to serve from a PHP template
+ */
 class HelloApp extends Application {
     public function __construct(
         ViewResponseFactoryInterface $viewResponseFactory
