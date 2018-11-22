@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Middleware\DisallowFrame;
-use Interop\Http\Factory\StreamFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Miklcct\ThinPhpApp\View\StaticTemplate;
 use Psr\Http\Message\ResponseInterface;

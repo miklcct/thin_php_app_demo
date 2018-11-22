@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\View;
 
-use Interop\Http\Factory\StreamFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 class AnimationScriptFactory {
     public function __construct(StreamFactoryInterface $streamFactory) {

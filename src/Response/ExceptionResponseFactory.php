@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Response;
 
 use App\View\ExceptionView;
-use Interop\Http\Factory\StreamFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\Response\ExceptionResponseFactoryInterface;
 use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;

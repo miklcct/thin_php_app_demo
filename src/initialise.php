@@ -10,10 +10,12 @@ use Http\Factory\Guzzle\RequestFactory;
 use Http\Factory\Guzzle\ResponseFactory;
 use Http\Factory\Guzzle\ServerRequestFactory;
 use Http\Factory\Guzzle\StreamFactory;
-use Interop\Http\Factory\RequestFactoryInterface;
-use Interop\Http\Factory\ResponseFactoryInterface;
-use Interop\Http\Factory\ServerRequestFactoryInterface;
-use Interop\Http\Factory\StreamFactoryInterface;
+use Miklcct\ThinPhpApp\Response\ResponseSender;
+use Miklcct\ThinPhpApp\Response\ResponseSenderInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Miklcct\ThinPhpApp\Exception\ExceptionErrorHandler;
 use Miklcct\ThinPhpApp\Exception\ResponseFactoryExceptionHandler;
 use Miklcct\ThinPhpApp\Response\ExceptionResponseFactoryInterface;
@@ -38,6 +40,7 @@ function get_container() : ContainerInterface {
                 StreamFactoryInterface::class => get(StreamFactory::class),
                 ExceptionResponseFactoryInterface::class => get(ExceptionResponseFactory::class),
                 ViewResponseFactoryInterface::class => get(ViewResponseFactory::class),
+                ResponseSenderInterface::class => get(ResponseSender::class),
             ]
         );
         $container = $builder->build();

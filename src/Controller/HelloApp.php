@@ -5,10 +5,10 @@ namespace App\Controller;
 
 use App\Middleware\DisallowFrame;
 use App\View\HelloViewFactory;
+use Miklcct\ThinPhpApp\Request\ServerRequest;
 use Miklcct\ThinPhpApp\Response\ViewResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use function Miklcct\ThinPhpApp\Request\get_client_address;
 
 /**
  * Example application to serve from a PHP template
@@ -27,7 +27,9 @@ class HelloApp extends Application {
     protected function run(ServerRequestInterface $request) : ResponseInterface {
         $response_factory = $this->viewResponseFactory;
         $view_factory = $this->viewFactory;
-        return $response_factory($view_factory(get_client_address($request), $request->getUri()->__toString()));
+        return $response_factory(
+            $view_factory((new ServerRequest($request))->getClientAddress(), $request->getUri()->__toString())
+        );
     }
 
     /** @var HelloViewFactory */

@@ -16,10 +16,13 @@
             "App\\" : "src/"
         }
     },
-    "require": {
+    "require" : {
         "php" : ">=7.1",
-        "miklcct/thin_php_app": "dev-master",
+        "miklcct/thin_php_app": "^0.3.0",
         "php-di/php-di": "^6.0",
-        "http-interop/http-factory-guzzle": "^0.3.1"
+        "http-interop/http-factory-guzzle": "^1.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
     }
 }
